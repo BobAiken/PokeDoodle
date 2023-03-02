@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from "react"
 import PokemonCard from "../PokemonCard/PokemonCard"
 import fetchPokemon from "../../apiCalls"
+import "./PokemonList.css"
 
 function PokemonList({pokemonList}){
 
@@ -17,9 +18,9 @@ function PokemonList({pokemonList}){
   )
 
   return (
-    <>
+    <div className="pokemon-container">
     {pokemonCards}
-    </>
+    </div>
   )
 }
 
