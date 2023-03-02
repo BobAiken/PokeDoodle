@@ -3,9 +3,24 @@ import PokemonCard from "../PokemonCard/PokemonCard"
 import fetchPokemon from "../../apiCalls"
 import "./PokemonList.css"
 
-function PokemonList({pokemonList}){
+function PokemonList({pokemonList,filterPokemon}){
 
-  const pokemonCards = pokemonList.map((pokemon,index) => {
+  const [query, setQuery] = useState('')
+
+  const handleChange = event => {
+    event.preventDefault()
+    setQuery(event.target.value)
+  }
+
+  const pokemonCards = pokemonList
+  .filter((pokemon)=>{
+    if(query === ""){
+      return pokemonList
+    } else {
+      return pokemon.name.toLowerCase().includes(query)
+    }
+  })
+  .map((pokemon,index) => {
       return(
         <PokemonCard
           id={index+1}
@@ -19,7 +34,12 @@ function PokemonList({pokemonList}){
 
   return (
     <div className="pokemon-container">
-    {pokemonCards}
+      <div className="search-bar">
+        <form>
+          <input type="text" value={query} onChange={handleChange}/>
+        </form>
+      </div>
+      {pokemonCards}
     </div>
   )
 }
