@@ -5,7 +5,7 @@ import './Header.css'
 export default function Header() {
   return (
     <div className='header'>
-      <Link to="/">
+      <Link to="/" className='headerLink'>
         PokeDoodle  
       </Link>
     </div>

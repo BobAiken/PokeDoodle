@@ -1,6 +1,6 @@
-import React, {useState,useEffect} from "react"
+import React, {useState} from "react"
 import PokemonCard from "../PokemonCard/PokemonCard"
-import fetchPokemon from "../../apiCalls"
+import { Link } from "react-router-dom"
 import "./PokemonList.css"
 
 function PokemonList({pokemonList}){
@@ -20,7 +20,7 @@ function PokemonList({pokemonList}){
       return pokemon.name.toLowerCase().includes(query)
     }
   })
-  .map((pokemon,index) => {
+  .map((pokemon) => {
     let id
     if(pokemon.url.length === 36) {
       id = pokemon.url.slice(-2,-1)
@@ -30,25 +30,29 @@ function PokemonList({pokemonList}){
       id = pokemon.url.slice(-4,-1)
     }
     return(
-      <PokemonCard
-      id={id}
-      key={id}
-      name={pokemon.name}
-      img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
-      />
+      <Link to={pokemon.name} className="link-styling">
+        <PokemonCard
+        id={id}
+        key={id}
+        name={pokemon.name}
+        img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
+        />
+      </Link>
       )
     }
     )
 
   return (
-    <div className="pokemon-container">
+    <>
       <div className="search-bar">
         <form>
-          <input type="text" value={query} onChange={handleChange}/>
+          <input type="text" value={query} onChange={handleChange} placeholder="Search"/>
         </form>
       </div>
+    <div className="pokemon-container">
       {pokemonCards}
     </div>
+    </>
   )
 }
 
