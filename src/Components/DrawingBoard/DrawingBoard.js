@@ -1,20 +1,28 @@
-import React, {useEffect, useState, useRef} from "react"
+import React, {useEffect, useState} from "react"
 import "./DrawingBoard.css"
+import CanvasDraw from "react-canvas-draw"
 
 
 
 export default function DrawingBoard(){
 
-  const canvasRef = useRef(null)
-  
-  useEffect(() => {
-    const canvas = canvasRef.current
-    const context = canvas.getContext('2d')
-    //Our first draw
-    context.fillStyle = '#000000'
-    context.fillRect(0, 0, context.canvas.width, context.canvas.height)
-  }, [])
+  const [color, setColor] = useState('#000000')
+  const [brushSize, setBrushSize] = useState(2)
+
+
   return (
-    <canvas id="drawing-board" width="320" height="320"></canvas>
+  <>
+  <div className="toolBar">
+    <input name="color" type="color" value={color} onChange={event=>{setColor(event.target.value)}}/>
+    <input name="brushSize" type="number" min={1} value={brushSize} onChange={event=>{setBrushSize(event.target.value)}}/>
+  </div>
+    <CanvasDraw 
+      brushColor={color} 
+      canvasWidth={320} 
+      canvasHeight={320} 
+      brushRadius={brushSize} 
+      lazyRadius={0}
+    />
+  </>
   )
 }
