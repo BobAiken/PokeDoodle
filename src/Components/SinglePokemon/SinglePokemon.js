@@ -4,7 +4,7 @@ import fetchPokemon from "../../apiCalls"
 import DrawingBoard from "../DrawingBoard/DrawingBoard"
 import "./SinglePokemon.css"
 
-export default function SinglePokemon() {
+export default function SinglePokemon({addToSavedImages}) {
   
   const [nationalNo, setNationalNo] = useState('')
   const [type, setType] = useState('')
@@ -46,13 +46,14 @@ export default function SinglePokemon() {
     <div className="single-pokemon-container">
       <img src={officialArt}/>
       <div className="pokedex-data">
+        <p>Name: {pokemonName}</p>
         <p>NationalNo: {nationalNo}</p>
         <p>Type: {type} {type2}</p>
         <p>Height: {height} m</p>
         <p>Weight: {weight} kg</p>
         <p>Abilities: {ability}, {ability2}, {ability3}</p>
       </div>
-      <DrawingBoard/>
+      <DrawingBoard pokemonName={pokemonName} addToSavedImages={addToSavedImages}/>
     </div>
   )
 }
