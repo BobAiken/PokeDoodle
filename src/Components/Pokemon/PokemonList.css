@@ -1,6 +1,24 @@
 .pokemon-container {
   padding: 20px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
+  overflow:auto;
+  background-color:lightcyan;
+}
+
+.link-styling {
+  color: black;
+  text-decoration: none;
+}
+
+.search-bar-container{
+  padding: 2rem;
+  background-color: lightcyan;
+}
+
+.search-bar {
+  width: 25vw;
+  padding: 1rem;
+  font-size: larger;
 }
