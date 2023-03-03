@@ -4,6 +4,13 @@ import fetchPokemon from "../../apiCalls"
 
 export default function SinglePokemon() {
   
+  const [nationalNo, setNationalNo] = useState('')
+  const [type, setType] = useState('')
+  const [species,setSpecies] = useState('')
+  const [height,setHeight] = useState('')
+  const [weight,setWeight] = useState('')
+  const [abilities,setAbilities] = useState('')
+
   let { pokemonName } = useParams()
 
   useEffect(()=>{

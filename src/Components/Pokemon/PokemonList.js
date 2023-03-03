@@ -44,9 +44,9 @@ function PokemonList({pokemonList}){
 
   return (
     <>
-      <div className="search-bar">
+      <div className="search-bar-container">
         <form>
-          <input type="text" value={query} onChange={handleChange} placeholder="Search"/>
+          <input type="text" value={query} onChange={handleChange} placeholder="Search" className="search-bar"/>
         </form>
       </div>
     <div className="pokemon-container">
