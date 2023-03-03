@@ -1,0 +1,14 @@
+.drawing-container {
+  display: flex;
+}
+
+#toolbar {
+  display: flex;
+  flex-direction: column;
+}
+
+.drawing-board {
+  border: solid black 2px;
+  height: 320px;
+  width: 320px;
+}

@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react"
 import { useParams } from "react-router-dom"
 import fetchPokemon from "../../apiCalls"
+import DrawingBoard from "../DrawingBoard/DrawingBoard"
+import "./SinglePokemon.css"
 
 export default function SinglePokemon() {
   
@@ -50,6 +52,7 @@ export default function SinglePokemon() {
         <p>Weight: {weight} kg</p>
         <p>Abilities: {ability}, {ability2}, {ability3}</p>
       </div>
+      <DrawingBoard/>
     </div>
   )
 }
