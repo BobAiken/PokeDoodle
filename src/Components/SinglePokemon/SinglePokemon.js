@@ -4,6 +4,7 @@ import fetchPokemon from "../../apiCalls"
 import DrawingBoard from "../DrawingBoard/DrawingBoard"
 import "./SinglePokemon.css"
 import PropTypes from "prop-types"
+import Error from "../Error/Error"
 
 
 export default function SinglePokemon({addToSavedImages}) {
@@ -16,8 +17,9 @@ export default function SinglePokemon({addToSavedImages}) {
   const [ability,setAbility] = useState('')
   const [ability2,setAbility2] = useState('')
   const [ability3,setAbility3] = useState('')
-
   const [officialArt, setOfficialArt] = useState('')
+  const [networkError, setNetworkError] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   let { pokemonName } = useParams()
 
@@ -40,23 +42,43 @@ export default function SinglePokemon({addToSavedImages}) {
       }
       setType(data.types["0"].type.name)
       setOfficialArt(data.sprites.other["official-artwork"].front_default)
+      setLoading(false)
+
+    })
+    .catch(()=>{
+      setNetworkError(true)
+      setLoading(false)
     })
   }
   ,[])
 
+  const renderSinglePokemon = () => {
+    if(loading){
+      return <div className="loading">Loading...</div>
+    } else if (networkError) {
+      return <Error/>
+    } else {
+      return (
+        <div className="single-pokemon-container">
+          <img src={officialArt}/>
+          <div className="pokedex-data">
+            <p>Name: {pokemonName}</p>
+            <p>NationalNo: {nationalNo}</p>
+            <p>Type: {type} {type2}</p>
+            <p>Height: {height} m</p>
+            <p>Weight: {weight} kg</p>
+            <p>Abilities: {ability}, {ability2}, {ability3}</p>
+          </div>
+          <DrawingBoard pokemonName={pokemonName} addToSavedImages={addToSavedImages}/>
+        </div>
+      )
+    }
+  }
+
   return (
-    <div className="single-pokemon-container">
-      <img src={officialArt}/>
-      <div className="pokedex-data">
-        <p>Name: {pokemonName}</p>
-        <p>NationalNo: {nationalNo}</p>
-        <p>Type: {type} {type2}</p>
-        <p>Height: {height} m</p>
-        <p>Weight: {weight} kg</p>
-        <p>Abilities: {ability}, {ability2}, {ability3}</p>
-      </div>
-      <DrawingBoard pokemonName={pokemonName} addToSavedImages={addToSavedImages}/>
-    </div>
+    <>
+      {renderSinglePokemon()}
+    </>
   )
 }
 

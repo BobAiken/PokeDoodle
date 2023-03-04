@@ -1,0 +1,17 @@
+.error {
+  color: red;
+  font-size: xx-large;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+  width:100vw;
+  justify-content: center;
+ 
+}
+
+.error-button {
+  margin-top: 3rem;
+  font-size: xx-large;
+  padding: 1rem;
+}

@@ -1,7 +1,8 @@
 .header {
   color: black;
   font-size: 5rem;
-  border-bottom: 5px solid black;
+  border-bottom: 3px solid black;
+  /* height: 15vh; */
 }
 
 .headerLink {
