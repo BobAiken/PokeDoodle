@@ -9,6 +9,18 @@ import SinglePokemon from '../SinglePokemon/SinglePokemon';
 function App() {
 
   const [pokemonList, setPokemonList] = useState([])
+  const [savedImages, setSavedImages] = useState([])
+
+  const addToSavedImages = (imageObjectToAdd) => {
+    const index = savedImages.findIndex(saveObject => saveObject.name === imageObjectToAdd.name)
+    if(index > -1){
+      let newSavedImages = savedImages
+      newSavedImages[index].saveData = imageObjectToAdd.saveData
+      setSavedImages(newSavedImages)
+    } else {
+      setSavedImages([...savedImages, imageObjectToAdd])
+    }
+  }
   
   useEffect(()=>{
     fetchPokemon('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0')
@@ -19,8 +31,8 @@ function App() {
    <main>
     <Header/>
     <Routes>
-      <Route exact path="/" element={<PokemonList pokemonList={pokemonList}/>}/>
-      <Route exact path=":pokemonName" element={<SinglePokemon/>}/>
+      <Route exact path="/" element={<PokemonList pokemonList={pokemonList} savedImages={savedImages}/>}/>
+      <Route exact path=":pokemonName" element={<SinglePokemon addToSavedImages={addToSavedImages}/>}/>
     </Routes>
    </main>
   );
