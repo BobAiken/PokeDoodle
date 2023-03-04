@@ -1,8 +1,7 @@
-import React, {useEffect, useState, useRef} from "react"
+import React, {useState, useRef} from "react"
 import "./DrawingBoard.css"
 import CanvasDraw from "react-canvas-draw"
-
-
+import PropTypes from "prop-types"
 
 export default function DrawingBoard({pokemonName, addToSavedImages}){
 
@@ -16,7 +15,6 @@ export default function DrawingBoard({pokemonName, addToSavedImages}){
       name: pokemonName,
       saveData: canvas.current.getSaveData()
     }
-    console.log(saveDataObject)
     addToSavedImages(saveDataObject)
   }
 
@@ -38,4 +36,9 @@ export default function DrawingBoard({pokemonName, addToSavedImages}){
     />
   </>
   )
+}
+
+DrawingBoard.propTypes = {
+  pokemonName: PropTypes.string,
+  addToSavedImages: PropTypes.func,
 }

@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom"
 import fetchPokemon from "../../apiCalls"
 import DrawingBoard from "../DrawingBoard/DrawingBoard"
 import "./SinglePokemon.css"
+import PropTypes from "prop-types"
+
 
 export default function SinglePokemon({addToSavedImages}) {
   
@@ -56,4 +58,8 @@ export default function SinglePokemon({addToSavedImages}) {
       <DrawingBoard pokemonName={pokemonName} addToSavedImages={addToSavedImages}/>
     </div>
   )
+}
+
+SinglePokemon.propTypes = {
+  addToSavedImages: PropTypes.func
 }

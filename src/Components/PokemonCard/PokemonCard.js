@@ -1,8 +1,9 @@
 import React, {useRef} from "react";
 import "./PokemonCard.css"
 import CanvasDraw from "react-canvas-draw"
+import PropTypes from "prop-types"
 
-function PokemonCard({name,img}) {
+export default function PokemonCard({name,img}) {
 
   let canvas = useRef('canvas')
 
@@ -27,4 +28,10 @@ function PokemonCard({name,img}) {
   )
 }
 
-export default PokemonCard
+PokemonCard.propTypes = {
+  name: PropTypes.string,
+  img: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+  ])
+}
