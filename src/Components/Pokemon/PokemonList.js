@@ -2,8 +2,9 @@ import React, {useState} from "react"
 import PokemonCard from "../PokemonCard/PokemonCard"
 import { Link } from "react-router-dom"
 import "./PokemonList.css"
+import PropTypes from "prop-types"
 
-function PokemonList({pokemonList,savedImages}){
+export default function PokemonList({pokemonList,savedImages}){
 
   const [query, setQuery] = useState('')
 
@@ -65,4 +66,7 @@ function PokemonList({pokemonList,savedImages}){
   )
 }
 
-export default PokemonList
+PokemonList.propTypes = {
+  pokemonList: PropTypes.array,
+  savedImages: PropTypes.array
+}
