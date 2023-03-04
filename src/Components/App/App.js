@@ -5,6 +5,7 @@ import PokemonList from '../Pokemon/PokemonList';
 import { Route, Routes, useParams } from "react-router-dom"
 import Header from '../Header/Header';
 import SinglePokemon from '../SinglePokemon/SinglePokemon';
+import Error from '../Error/Error';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
     <Routes>
       <Route exact path="/" element={<PokemonList pokemonList={pokemonList} savedImages={savedImages}/>}/>
       <Route exact path=":pokemonName" element={<SinglePokemon addToSavedImages={addToSavedImages}/>}/>
+      <Route path="*" element={<Error/>}/>
     </Routes>
    </main>
   );
