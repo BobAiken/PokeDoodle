@@ -1,14 +1,14 @@
-.drawing-container {
+.toolBar {
   display: flex;
+  flex-direction: row;
+  background-color: white;
 }
 
-#toolbar {
-  display: flex;
-  flex-direction: column;
-}
-
-.drawing-board {
-  border: solid black 2px;
-  height: 320px;
+.drawing-pad {
+  border: solid black 1px;
   width: 320px;
+}
+
+.brush-size {
+  width: 2rem;
 }

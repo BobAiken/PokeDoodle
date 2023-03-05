@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import fetchPokemon from "../../apiCalls"
 import DrawingBoard from "../DrawingBoard/DrawingBoard"
 import "./SinglePokemon.css"
@@ -60,14 +60,19 @@ export default function SinglePokemon({addToSavedImages}) {
     } else {
       return (
         <div className="single-pokemon-container">
-          <img src={officialArt}/>
-          <div className="pokedex-data">
-            <p>Name: {pokemonName}</p>
-            <p>NationalNo: {nationalNo}</p>
-            <p>Type: {type} {type2}</p>
-            <p>Height: {height} m</p>
-            <p>Weight: {weight} kg</p>
-            <p>Abilities: {ability}, {ability2}, {ability3}</p>
+          <img className="single-pokemon-official-art" src={officialArt}/>
+          <div className="single-pokemon-middle-section">
+            <div className="pokedex-data">
+              <p>Name: {pokemonName}</p>
+              <p>NationalNo: {nationalNo}</p>
+              <p>Type: {type} {type2}</p>
+              <p>Height: {height} m</p>
+              <p>Weight: {weight} kg</p>
+              <p>Abilities: {ability}, {ability2}, {ability3}</p>
+            </div>
+            <Link to="/">
+              <button className="single-pokemon-go-home-button">Go Home</button>
+            </Link>
           </div>
           <DrawingBoard pokemonName={pokemonName} addToSavedImages={addToSavedImages}/>
         </div>

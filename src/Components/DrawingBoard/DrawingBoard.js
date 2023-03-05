@@ -19,13 +19,14 @@ export default function DrawingBoard({pokemonName, addToSavedImages}){
   }
 
   return (
-  <>
-  <div className="toolBar">
-    <input name="color" type="color" value={color} onChange={event=>{setColor(event.target.value)}}/>
-    <input name="brushSize" type="number" min={1} value={brushSize} onChange={event=>{setBrushSize(event.target.value)}}/>
-    <button onClick={()=>canvas.current.clear()}>Clear</button>
-    <button onClick={()=>handleSave()}>Save This Doodle!</button>
-  </div>
+  <div className="drawing-pad">
+    <div className="toolBar">
+      <input name="color" type="color" value={color} onChange={event=>{setColor(event.target.value)}}/>
+      <input className="brush-size" name="brushSize" type="number" min={1} value={brushSize} onChange={event=>{setBrushSize(event.target.value)}}/>
+      <button onClick={()=>canvas.current.clear()}>Clear</button>
+      <button onClick={()=>canvas.current.undo()}>Undo</button>
+      <button onClick={()=>handleSave()}>Set to Display!</button>
+    </div>
     <CanvasDraw 
       ref={canvas}
       brushColor={color}
@@ -34,7 +35,7 @@ export default function DrawingBoard({pokemonName, addToSavedImages}){
       brushRadius={brushSize}
       lazyRadius={0}
     />
-  </>
+  </div>
   )
 }
 
