@@ -25,7 +25,7 @@ export default function DrawingBoard({pokemonName, addToSavedImages}){
       <input className="brush-size" name="brushSize" type="number" min={1} value={brushSize} onChange={event=>{setBrushSize(event.target.value)}}/>
       <button onClick={()=>canvas.current.clear()}>Clear</button>
       <button onClick={()=>canvas.current.undo()}>Undo</button>
-      <button onClick={()=>handleSave()}>Set to Display!</button>
+      <button className="display-button" onClick={()=>handleSave()}>Set to Display!</button>
     </div>
     <CanvasDraw 
       ref={canvas}
