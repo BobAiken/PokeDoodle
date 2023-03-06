@@ -1,6 +1,6 @@
-# Travel Tracker
+# PokeDoodle
 
-## [Deployment Link] (https://poke-doodle.vercel.app/)
+## [Deployment Link](https://poke-doodle.vercel.app/)
 
 ### Learning Goals:
 Demonstrate mastery of the following:
