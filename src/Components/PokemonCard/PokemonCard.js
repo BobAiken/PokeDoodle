@@ -10,7 +10,7 @@ export default function PokemonCard({name,img}) {
   return (
     <div className="card">
       <div className="card-header">
-        <p>{name}</p>
+        <p>{name.charAt(0).toUpperCase()+name.slice(1)}</p>
       </div>
       {typeof img === "object" ? 
       <CanvasDraw 

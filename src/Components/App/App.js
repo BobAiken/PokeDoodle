@@ -29,7 +29,7 @@ function App() {
     },[])
 
   return (
-   <main>
+   <main className='main'>
     <Header/>
     <Routes>
       <Route exact path="/" element={<PokemonList pokemonList={pokemonList} savedImages={savedImages}/>}/>
