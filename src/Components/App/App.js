@@ -2,7 +2,7 @@ import './App.css';
 import React, {useEffect, useState} from "react"
 import fetchPokemon from '../../apiCalls';
 import PokemonList from '../Pokemon/PokemonList';
-import { Route, Routes, useParams } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import Header from '../Header/Header';
 import SinglePokemon from '../SinglePokemon/SinglePokemon';
 import Error from '../Error/Error';
@@ -29,7 +29,7 @@ function App() {
     },[])
 
   return (
-   <main>
+   <main className='main'>
     <Header/>
     <Routes>
       <Route exact path="/" element={<PokemonList pokemonList={pokemonList} savedImages={savedImages}/>}/>

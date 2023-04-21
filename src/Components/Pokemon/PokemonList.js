@@ -27,7 +27,7 @@ export default function PokemonList({pokemonList,savedImages}){
     if(query === ""){
       return pokemonList
     } else {
-      return pokemon.name.toLowerCase().includes(query)
+      return pokemon.name.toUpperCase().includes(query.toUpperCase())
     }
   })
   .map((pokemon) => {
